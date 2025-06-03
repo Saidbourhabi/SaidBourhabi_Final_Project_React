@@ -11,6 +11,11 @@ import 'swiper/css/autoplay';
 import jerseyImage from '../../assets/images/jersyimage.jpg';
 import inter from '../../assets/images/inter.jpg';
 import brazil from '../../assets/images/brazil.jpg';
+import dush2 from '../../assets/images/dush2.jpg';
+import spain2 from '../../assets/images/spain2.jpg';
+import dush from '../../assets/images/dush.jpg';
+
+
 
 const heroSlides = [
     {
@@ -33,6 +38,33 @@ const heroSlides = [
         subtitle: 'Iconic designs from football history',
         position: 'center',
         buttonText: 'View Collection'
+    }
+];
+
+const collectionData = [
+    {
+        image: spain2,
+        title: "Classic Collection",
+        description: "Vintage football jerseys from legendary teams",
+        category: "Classic"
+    },
+    {
+        image: dush,
+        title: "Modern Editions",
+        description: "Contemporary designs with premium quality",
+        category: "Modern"
+    },
+    {
+        image: brazil,
+        title: "National Teams",
+        description: "Iconic national team jerseys from around the world",
+        category: "National"
+    },
+    {
+        image: dush2,
+        title: "Limited Edition",
+        description: "Rare and exclusive football jerseys for collectors",
+        category: "Limited"
     }
 ];
 
@@ -100,6 +132,22 @@ const Home = () => {
                 duration: 0.2
             }
         }
+    };
+
+    const cardVariants = {
+        hidden: { 
+            opacity: 0,
+            y: 50
+        },
+        visible: (custom) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: custom * 0.2,
+                duration: 0.5,
+                ease: [0.6, -0.05, 0.01, 0.99]
+            }
+        })
     };
 
     return (
@@ -193,6 +241,77 @@ const Home = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+            </section>
+            {/* **-----------------------------------------------------------------------** */}
+            {/* Cards Shop  */}
+            <section>
+                
+            </section>
+
+            {/* Collection Cards Section */}
+            <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
+                <div className="container mx-auto">
+                    {/* Section Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Our Collections</h2>
+                        <p className="text-gray-600 text-lg max-w-2xl mx-auto">Discover our exclusive range of football jerseys from classic vintage to modern designs</p>
+                    </motion.div>
+
+                    {/* Cards Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+                        {collectionData.map((item, index) => (
+                            <motion.div
+                                key={index}
+                                variants={cardVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                custom={index}
+                                className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+                            >
+                                {/* Card Image Container */}
+                                <div className="aspect-[4/5] overflow-hidden">
+                                    <motion.img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                    {/* Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                </div>
+
+                                {/* Card Content */}
+                                <motion.div 
+                                    className="absolute inset-0 flex flex-col justify-end p-6 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300"
+                                >
+                                    <span className="text-sm font-medium text-red-600 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                        {item.category}
+                                    </span>
+                                    <h3 className="text-xl font-bold mb-2 transform -translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-sm text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">
+                                        {item.description}
+                                    </p>
+                                    <Link
+                                        to="/shop"
+                                        className="inline-flex items-center justify-center w-full py-2.5 px-4 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg text-white text-sm font-medium 
+                                        transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-200
+                                        hover:bg-white hover:text-black"
+                                    >
+                                        Explore Collection
+                                    </Link>
+                                </motion.div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
             </section>
         </>
     );
