@@ -15,6 +15,7 @@ import brazil from '../../assets/images/brazil.jpg';
 import dush2 from '../../assets/images/dush2.jpg';
 import spain2 from '../../assets/images/spain2.jpg';
 import dush from '../../assets/images/dush.jpg';
+import messi from '../../assets/images/messi.jpg';
 
 
 
@@ -124,6 +125,35 @@ const Home = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [direction, setDirection] = useState('next');
     const [imagesLoaded, setImagesLoaded] = useState(false);
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    });
+
+    // Counter Effect
+    React.useEffect(() => {
+        // Set end date to 7 days from now
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 10);
+
+        const timer = setInterval(() => {
+            const now = new Date();
+            const difference = endDate - now;
+
+            if (difference > 0) {
+                setTimeLeft({
+                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                    minutes: Math.floor((difference / 1000 / 60) % 60),
+                    seconds: Math.floor((difference / 1000) % 60)
+                });
+            }
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
 
     // Preload images
     React.useEffect(() => {
@@ -451,6 +481,116 @@ const Home = () => {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+                    </div>
+                </div>
+            </section>
+            {/* ----------------------------------------------------------- */}
+            {/* Special Cards Section */}
+            <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+                        {/* Messi Card with Counter */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="relative h-[400px] sm:h-[450px] md:h-[500px] rounded-2xl overflow-hidden group"
+                        >
+                            <div className="absolute inset-0">
+                                <img 
+                                    src={messi} 
+                                    alt="Messi Special Edition" 
+                                    className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                            </div>
+                            
+                            <div className="relative h-full flex flex-col justify-end p-4 sm:p-6 md:p-8">
+                                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4">Messi Special Edition</h3>
+                                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6">Limited time offer for our exclusive collection</p>
+                                
+                                {/* Counter */}
+                                <div className="grid grid-cols-4 gap-2 sm:gap-4 mb-4 sm:mb-6">
+                                    {[
+                                        { label: 'Days', value: timeLeft.days },
+                                        { label: 'Hours', value: timeLeft.hours },
+                                        { label: 'Minutes', value: timeLeft.minutes },
+                                        { label: 'Seconds', value: timeLeft.seconds }
+                                    ].map((unit) => (
+                                        <div key={unit.label} className="text-center">
+                                            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3">
+                                                <span className="block text-lg sm:text-xl md:text-2xl font-bold text-white">
+                                                    {String(unit.value).padStart(2, '0')}
+                                                </span>
+                                                <span className="text-xs sm:text-sm text-gray-300">{unit.label}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <Link
+                                    to="/shop"
+                                    className="inline-flex items-center justify-center w-full py-2.5 sm:py-3 px-4 sm:px-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg text-sm sm:text-base font-medium 
+                                    transition-all duration-300 hover:bg-white hover:text-black"
+                                >
+                                    Shop Collection
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Changing Images Card */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="relative h-[400px] sm:h-[450px] md:h-[500px] rounded-2xl overflow-hidden"
+                        >
+                            <Swiper
+                                modules={[Autoplay, EffectFade]}
+                                effect="fade"
+                                speed={1000}
+                                autoplay={{
+                                    delay: 3000,
+                                    disableOnInteraction: false,
+                                }}
+                                loop={true}
+                                className="h-full w-full"
+                            >
+                                {[brazil, spain2, dush, inter].map((image, index) => (
+                                    <SwiperSlide key={index}>
+                                        <div className="relative h-full">
+                                            <img 
+                                                src={image} 
+                                                alt={`Featured Jersey ${index + 1}`}
+                                                className="w-full h-full object-cover object-center"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                                            
+                                            <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 md:p-8">
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    whileInView={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.2 }}
+                                                    className="max-w-md"
+                                                >
+                                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4">Premium Collection</h3>
+                                                    <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6">Discover our latest arrivals of premium football jerseys</p>
+                                                    <Link
+                                                        to="/shop"
+                                                        className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg text-sm sm:text-base font-medium 
+                                                        transition-all duration-300 hover:bg-white hover:text-black"
+                                                    >
+                                                        Explore More
+                                                    </Link>
+                                                </motion.div>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </motion.div>
                     </div>
                 </div>
             </section>
