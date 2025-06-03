@@ -594,6 +594,170 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            {/* ------------------------------------------------------ */}
+            {/* Blog Section */}
+            <section className="py-16 px-4 bg-gradient-to-b from-white to-gray-50">
+                <div className="container mx-auto">
+                    {/* Section Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Latest Stories</h2>
+                        <p className="text-gray-600 text-lg max-w-2xl mx-auto">Discover the history and stories behind legendary football jerseys</p>
+                    </motion.div>
+
+                    {/* Blog Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                        {/* Blog Card 1 */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                        >
+                            <div className="aspect-[16/10] overflow-hidden">
+                                <img 
+                                    src={brazil} 
+                                    alt="Brazil 1970 Jersey Story" 
+                                    className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 flex flex-col justify-end p-6">
+                                <div className="flex items-center mb-4">
+                                    <span className="text-sm text-red-600 font-medium">History</span>
+                                    <span className="mx-2 text-white/50">•</span>
+                                    <span className="text-sm text-gray-300">5 min read</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-red-600 transition-colors duration-300">
+                                    The Legendary Brazil 1970 Jersey: A Symbol of Beautiful Football
+                                </h3>
+                                <p className="text-gray-300 mb-4 line-clamp-2">
+                                    Discover the story behind the iconic yellow jersey worn by Pelé and the Brazilian team during their triumphant 1970 World Cup campaign.
+                                </p>
+                                <Link
+                                    to="/blog"
+                                    className="inline-flex items-center text-white font-medium group-hover:text-red-600 transition-colors duration-300"
+                                >
+                                    Read More
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" 
+                                        className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Blog Card 2 */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                        >
+                            <div className="aspect-[16/10] overflow-hidden">
+                                <img 
+                                    src={spain2} 
+                                    alt="Spain's Evolution Story" 
+                                    className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 flex flex-col justify-end p-6">
+                                <div className="flex items-center mb-4">
+                                    <span className="text-sm text-red-600 font-medium">Design</span>
+                                    <span className="mx-2 text-white/50">•</span>
+                                    <span className="text-sm text-gray-300">4 min read</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-red-600 transition-colors duration-300">
+                                    Evolution of Spain's National Team Jersey Design
+                                </h3>
+                                <p className="text-gray-300 mb-4 line-clamp-2">
+                                    From traditional red to modern interpretations: How Spain's jersey design has evolved while maintaining its iconic status.
+                                </p>
+                                <Link
+                                    to="/blog"
+                                    className="inline-flex items-center text-white font-medium group-hover:text-red-600 transition-colors duration-300"
+                                >
+                                    Read More
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" 
+                                        className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Blog Card 3 */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                        >
+                            <div className="aspect-[16/10] overflow-hidden">
+                                <img 
+                                    src={inter} 
+                                    alt="Inter Milan Classic" 
+                                    className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 flex flex-col justify-end p-6">
+                                <div className="flex items-center mb-4">
+                                    <span className="text-sm text-red-600 font-medium">Classic</span>
+                                    <span className="mx-2 text-white/50">•</span>
+                                    <span className="text-sm text-gray-300">3 min read</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-red-600 transition-colors duration-300">
+                                    Inter Milan's Iconic Stripes: A Design Legacy
+                                </h3>
+                                <p className="text-gray-300 mb-4 line-clamp-2">
+                                    The story behind Inter Milan's legendary black and blue striped jersey and its significance in football history.
+                                </p>
+                                <Link
+                                    to="/blog"
+                                    className="inline-flex items-center text-white font-medium group-hover:text-red-600 transition-colors duration-300"
+                                >
+                                    Read More
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" 
+                                        className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* View All Button */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        className="text-center mt-12"
+                    >
+                        <Link
+                            to="/blog"
+                            className="inline-flex items-center justify-center px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg text-lg font-medium 
+                            transition-all duration-300 hover:bg-white hover:text-black group"
+                        >
+                            View All Stories
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" 
+                                className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </Link>
+                    </motion.div>
+                </div>
+            </section>
         </>
     );
 };
