@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaShippingFast, FaStore } from 'react-icons/fa';
+import { TbTruckReturn } from 'react-icons/tb';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
@@ -594,7 +596,65 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* ------------------------------------------------------ */}
+
+            {/* Services Section */}
+            <section className="py-16 px-4 bg-gradient-to-b from-white to-gray-50">
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                        {/* Free Delivery */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                            className="group bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all duration-300"
+                        >
+                            <div className="flex flex-col items-center text-center">
+                                <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                                    <FaShippingFast size={32} />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">Free Delivery Worldwide</h3>
+                                <p className="text-gray-600">Mirum est notare quam littera gothica</p>
+                            </div>
+                        </motion.div>
+
+                        {/* 30 Days Return */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="group bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all duration-300"
+                        >
+                            <div className="flex flex-col items-center text-center">
+                                <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                                    <TbTruckReturn size={32} />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">30 Days Return</h3>
+                                <p className="text-gray-600">Simply return it within 30 days for an exchange.</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Store Opening */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="group bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all duration-300"
+                        >
+                            <div className="flex flex-col items-center text-center">
+                                <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                                    <FaStore size={32} />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">Store Opening</h3>
+                                <p className="text-gray-600">Shop open from Monday to Sunday</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
             {/* Blog Section */}
             <section className="py-16 px-4 bg-gradient-to-b from-white to-gray-50">
                 <div className="container mx-auto">
